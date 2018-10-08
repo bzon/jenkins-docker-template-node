@@ -67,5 +67,18 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
   && apk del .build-deps-yarn
 
-RUN apk add docker sudo git openssh curl jq
-
+# Tools
+RUN apk -v --update add \
+        git \
+        sudo \
+        openssh \
+        jq \
+        docker \
+        python \
+        py-pip \
+        && \
+    pip install --upgrade awscli \
+      s3cmd \
+      python-magic && \
+    apk -v --purge del py-pip && \
+    rm /var/cache/apk/*
