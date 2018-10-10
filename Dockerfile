@@ -67,8 +67,8 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
   && apk del .build-deps-yarn
 
-# Tools
-RUN apk -v --update add \
+# Build and helper tools
+RUN apk -v --no-cache --update add \
         git \
         sudo \
         openssh \
@@ -81,4 +81,5 @@ RUN apk -v --update add \
       s3cmd \
       python-magic && \
     apk -v --purge del py-pip && \
+    npm install -g @angular/cli && \
     rm /var/cache/apk/*
