@@ -1,5 +1,5 @@
 # Dockerfile based on https://github.com/nodejs/docker-node/blob/master/8/alpine/Dockerfile
-FROM openjdk:alpine
+FROM quay.io/bzon/openjdk:stable
 
 ENV NODE_VERSION 8.12.0
 
