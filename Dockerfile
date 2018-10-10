@@ -81,5 +81,4 @@ RUN apk -v --no-cache --update add \
       s3cmd \
       python-magic && \
     apk -v --purge del py-pip && \
-    npm install -g @angular/cli && \
-    rm /var/cache/apk/*
+    npm install -g @angular/cli
