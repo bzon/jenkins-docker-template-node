@@ -42,7 +42,6 @@ RUN addgroup -g 1000 node \
     && ./configure \
     && make -j$(getconf _NPROCESSORS_ONLN) \
     && make install \
-    && apk del .build-deps \
     && cd .. \
     && rm -Rf "node-v$NODE_VERSION" \
     && rm "node-v$NODE_VERSION.tar.xz" SHASUMS256.txt.asc SHASUMS256.txt
@@ -64,8 +63,7 @@ RUN apk add --no-cache --virtual .build-deps-yarn curl gnupg tar \
   && tar -xzf yarn-v$YARN_VERSION.tar.gz -C /opt/ \
   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarn /usr/local/bin/yarn \
   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
-  && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz \
-  && apk del .build-deps-yarn
+  && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
 # Build and helper tools
 RUN apk -v --no-cache --update add \
