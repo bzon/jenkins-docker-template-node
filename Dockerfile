@@ -74,7 +74,6 @@ RUN apk -v --no-cache --update add \
         docker \
         python \
         py-pip \
-        autoreconf \
         && \
     pip install --upgrade awscli \
       s3cmd \
